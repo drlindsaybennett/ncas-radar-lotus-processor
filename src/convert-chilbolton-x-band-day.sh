@@ -56,8 +56,9 @@ while [[ $chunk -lt 24 ]]; do
     output_base=$output_basedir/$(echo $ARGS | cut -d' ' -f1)
 
     script_cmd="bsub -q $QUEUE -W $wallclock -o ${output_base}.out -e ${output_base}.err $SCRIPT_DIR/convert-chilbolton-x-band-hour.sh $ARGS"
+    script_cmd="$SCRIPT_DIR/convert-chilbolton-x-band-hour.sh $ARGS"
     echo "[INFO] Running: $script_cmd"
-#    $script_cmd
+    $script_cmd
 
 
 done
