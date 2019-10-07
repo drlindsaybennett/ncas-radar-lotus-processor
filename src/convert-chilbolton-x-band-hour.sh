@@ -24,8 +24,8 @@ success_dir=$LOG_BASEDIR/success/$YYYY/$MM/$DD
 failure_dir=$LOG_BASEDIR/failure/$YYYY/$MM/$DD
 bad_num_dir=$LOG_BASEDIR/bad_num/$YYYY/$MM/$DD
 
+mkdir -p $success_dir $failure_dir $bad_num_dir
 
-mkdir -p $success_dir $failure_dir
 
 for dh in $DATE_HOURS; do
 
