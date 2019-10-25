@@ -5,8 +5,25 @@ source defaults.cfg
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+DATE=
+SCAN_TYPE=
+
 # Parse command-line arguments
-DATE=$1
+while getopts "t:d:" OPTION; do
+    case $OPTION in
+    t)
+        SCAN_TYPE=$OPTARG
+        ;;
+    d)
+        DATE=$OPTARG
+        ;;
+    *)
+        echo "[ERROR] Incorrect options provided"
+        exit 1
+        ;;
+    esac
+done
+
 
 if [[ ! $DATE ]] || [[ ${#DATE} -ne 8 ]] && [[ ! $DATE =~ /\d{8}/ ]]; then
     echo "[ERROR] Date must be 8 digits, not: '$DATE'"
@@ -17,6 +34,12 @@ fi
 if [[ $DATE -lt $START_DATE ]] || [[ $DATE -gt $END_DATE ]]; then
     echo "[ERROR] Date is out of range: $DATE"
     echo "        Allowed range: $START_DATE - $END_DATE"
+    exit 1
+fi
+
+# Check scan type
+if [[ ! $SCAN_TYPE =~ ^(vol|ele|azi)$ ]]; then
+    echo "[ERROR] Scan type must be one of 'vol', 'ele', 'azi'."
     exit 1
 fi
 
@@ -38,7 +61,7 @@ chunk=0
 
 while [[ $chunk -lt 24 ]]; do
 
-    ARGS=""
+    ARGS="-t $SCAN_TYPE"
 
     for hour in $(seq $chunk $(expr $chunk + $CHUNK_SIZE - 1)); do
 
@@ -56,7 +79,7 @@ while [[ $chunk -lt 24 ]]; do
     output_base=$output_basedir/$(echo $ARGS | cut -d' ' -f1)
 
     script_cmd="bsub -q $QUEUE -W $wallclock -o ${output_base}.out -e ${output_base}.err $SCRIPT_DIR/convert-chilbolton-x-band-hour.sh $ARGS"
-    script_cmd="$SCRIPT_DIR/convert-chilbolton-x-band-hour.sh $ARGS"
+#    script_cmd="$SCRIPT_DIR/convert-chilbolton-x-band-hour.sh $ARGS"
     echo "[INFO] Running: $script_cmd"
     $script_cmd
 
