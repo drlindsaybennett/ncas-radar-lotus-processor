@@ -44,6 +44,10 @@ Login to a JASMIN sci server:
 ssh <userid>@jasmin-sci5.ceda.ac.uk
 ```
 
+*EDIT THESE FILES TO MATCH YOUR SETUP*:
+- `defaults.cfg`
+- `setup-env.sh`
+
 Clone the repository and go to the `src` directory:
 
 ```
