@@ -38,6 +38,19 @@ The structure is as follows:
     
 ## Example usage
 
+Login to a JASMIN sci server:
+
+```
+ssh <userid>@jasmin-sci5.ceda.ac.uk
+```
+
+Clone the repository and go to the `src` directory:
+
+```
+git clone https://github.com/agstephens/ncas-radar-lotus-processor
+cd ncas-radar-lotus-processor/src/
+```
+
 Run for "vol" scan types for a single day using the top-level script:
 
 ```
