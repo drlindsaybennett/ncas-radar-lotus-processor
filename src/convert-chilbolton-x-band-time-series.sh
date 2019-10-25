@@ -56,11 +56,12 @@ CURRENT_DATE=$START_DATE
 while [[ $CURRENT_DATE -le $END_DATE ]]; do
 
     echo "[INFO] Running for: $CURRENT_DATE"
-    CURRENT_DATE=$(date '+%Y%m%d' -d "${CURRENT_DATE}+1 day")
 
     script_cmd="$SCRIPT_DIR/convert-chilbolton-x-band-day.sh -t $SCAN_TYPE -d $CURRENT_DATE"
     echo "[INFO] Running: $script_cmd"
     $script_cmd
+
+    CURRENT_DATE=$(date '+%Y%m%d' -d "${CURRENT_DATE}+1 day")
 
 done
 exit 0;

@@ -36,3 +36,22 @@ The structure is as follows:
     - checks if output produced
     - checks if correct number of variables, i.e. count(input) == count(output)
     
+## Example usage
+
+Run for "vol" scan types for a single day using the top-level script:
+
+```
+./convert-chilbolton-x-band-time-series.sh -s 20170501 -e 20170501 -t vol
+```
+
+Or, just use the "day" script (which gets called in the above anyway):
+
+```
+./convert-chilbolton-x-band-day.sh -t vol -d 20170501
+```
+
+If you wanted to just call the "hour" script locally (instead of using LOTUS):
+
+```
+./convert-chilbolton-x-band-hour.sh -t vol 2017050100
+```
