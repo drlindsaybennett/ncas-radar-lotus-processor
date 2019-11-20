@@ -3,7 +3,8 @@ export LD_LIBRARY_PATH=/gws/smf/j04/ncas_radar/software/LROSE/lib:/gws/smf/j04/n
 export PATH=/gws/smf/j04/ncas_radar/software/LROSE/bin:$PATH
 
 #export PROJ_DIR=/gws/nopw/j04/ncas_radar_vol1/lindsay/projDir
-export DATA_DIR=/gws/nopw/j04/ncas_radar_vol1/ag/output
+#export DATA_DIR=/gws/nopw/j04/ncas_radar_vol1/ag/output
+export DATA_DIR=/gws/nopw/j04/ncas_radar_vol2/data/xband
 
 export RAINE_DIR=/gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/incoming/raine
 export CHIL_DIR=/gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton

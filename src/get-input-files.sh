@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DIRS="/gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton03_data.vol"
+#DIRS="/gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton03_data.vol"
+DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton0*_data.vol)
 
 # Load defaults
 source defaults.cfg
