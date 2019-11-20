@@ -74,7 +74,7 @@ while [[ $chunk -lt 24 ]]; do
      
     echo "[INFO] Running for: $DATE_HOUR"
 
-    wallclock=$(printf %02d ${CHUNK_SIZE}):00 
+    wallclock=$(printf %02d $((${CHUNK_SIZE} / 2))):00 
     
     output_base=$output_basedir/$(echo $ARGS | cut -d' ' -f3)
 

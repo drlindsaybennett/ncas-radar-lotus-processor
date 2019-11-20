@@ -65,7 +65,7 @@ for dh in $DATE_HOURS; do
     echo "[INFO] Processing: $dh"
     
     # Get input files
-    input_files=$($SCRIPT_DIR/get-input-files.sh $dh | sort -u)
+    input_files=$($SCRIPT_DIR/get-input-files.sh $dh $SCAN_TYPE | sort -u)
     
     for dbz_file in $input_files; do 
 
