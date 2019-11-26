@@ -22,16 +22,16 @@ DD=$(echo $DATE_HOUR | cut -c7-8)
 DATE_DIR="${YYYY}-${MM}-${DD}"
 
 if [ $SCAN_TYPE = 'vol' ]; then
-    DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton0*_data.vol)
+    DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton*_*.vol)
 elif [ $SCAN_TYPE = 'ele' ]; then
     DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton_*.ele)
 elif [ $SCAN_TYPE = 'azi' ]; then
-    DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton0*_zdr.azi)
+    DIRS=$(ls -d /gws/nopw/j04/ncas_obs/amf/raw_data/ncas-mobile-x-band-radar-1/data/chilbolton/chilbolton*.azi)
 fi
 
 
 for dr in $DIRS; do
 
-    ls $dr/$DATE_DIR/${DATE_HOUR}*dBZ.$SCAN_TYPE 
+    ls $dr/$DATE_DIR/${DATE_HOUR}*dBZv.$SCAN_TYPE 
 
 done
