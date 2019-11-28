@@ -1,24 +1,33 @@
 #!/bin/bash
 #apply calibration offsets to uncalibrated cfradials
 
-source ~/lrose/ncas-radar-lotus-processor/src/defaults.cfg
+#Load defaults
+SCRIPT_DIR=/home/users/lbennett/lrose/ncas-radar-lotus-processor/src/
+source $SCRIPT_DIR/defaults.cfg
 
 opts=("$@")
-params_file=${opts[0]}
-files=${opts[@]:1}
+params_index=${opts[0]}
+chunk_index=${opts[1]}
+files=${opts[@]:2}
 
 YYYY=$(date +%Y)
 MM=$(date +%m)
 DD=$(date +%d)
 
-logdir=/home/users/lbennett/logs/
 lotus_outdir=$LOTUS_OUTPUTS_BASEDIR/$YYYY/$MM/$DD
 
-mkdir -p $lotus_output_basedir
+mkdir -p $lotus_outdir
 
 wallclock=04:00
 
-script_cmd="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/%J.out -e $lotus_outdir/%J.err RadxConvert -v -params ${params_file} -f $files"
+logfile=$YYYY$MM$DD\_$(printf %03d ${chunk_index})
 
-echo $script_cmd
- 
+ARGS="${params_index} $files"
+
+#script_cmd="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err RadxConvert -v -params ${params_file} -f $files"
+script_cmd="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err $SCRIPT_DIR/calibrate_chilbolton_chunk.sh $ARGS"
+script_cmd_noARGS="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err $SCRIPT_DIR/calibrate_chilbolton_chunk.sh"
+echo "[INFO] Running: $script_cmd_noARGS"
+$script_cmd
+
+exit 0; 
