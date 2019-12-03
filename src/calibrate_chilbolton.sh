@@ -13,6 +13,9 @@ files=${opts[@]:2}
 YYYY=$(date +%Y)
 MM=$(date +%m)
 DD=$(date +%d)
+HH=$(date +%H)
+NN=$(date +%M)
+SS=$(date +%S)
 
 lotus_outdir=$LOTUS_OUTPUTS_BASEDIR/$YYYY/$MM/$DD
 
@@ -20,7 +23,7 @@ mkdir -p $lotus_outdir
 
 wallclock=04:00
 
-logfile=$YYYY$MM$DD\_$(printf %03d ${chunk_index})
+logfile=$YYYY$MM$DD\_$HH$NN\_$(printf %03d ${chunk_index})
 
 ARGS="${params_index} $files"
 
