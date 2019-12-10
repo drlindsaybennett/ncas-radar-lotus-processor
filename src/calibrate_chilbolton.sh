@@ -29,6 +29,7 @@ ARGS="${params_index} $files"
 
 #script_cmd="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err RadxConvert -v -params ${params_file} -f $files"
 script_cmd="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err $SCRIPT_DIR/calibrate_chilbolton_chunk.sh $ARGS"
+#output info not including big list of arguments
 script_cmd_noARGS="bsub -q $QUEUE -W $wallclock -o $lotus_outdir/${logfile}.out -e $lotus_outdir/${logfile}.err $SCRIPT_DIR/calibrate_chilbolton_chunk.sh"
 echo "[INFO] Running: $script_cmd_noARGS"
 $script_cmd
