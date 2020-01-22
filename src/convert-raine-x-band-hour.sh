@@ -114,7 +114,7 @@ for dh in $DATE_HOURS; do
             scan_dir_name=$(echo $mapped_scan_type | tr '[:upper:]' '[:lower:]')
         fi
 
-        expected_file=$DATA_DIR/chilbolton/cfradial/uncalib_v1/${scan_dir_name}/$DATE/ncas-mobile-x-band-radar-1_chilbolton_${DATE}-${time_digits}_${mapped_scan_type}_v1.nc
+        expected_file=$DATA_DIR/raine/cfradial/uncalib_v1_new/${scan_dir_name}/$DATE/ncas-mobile-x-band-radar-1_sandwith_${DATE}-${time_digits}_${mapped_scan_type}_v1.nc
         echo "[INFO] Checking that the output file has been produced."
 
         if [ ! -f $expected_file ]; then

@@ -30,6 +30,6 @@ fi
 
 for dr in $DIRS; do
 
-    ls $dr/$DATE_DIR/${DATE_HOUR}*dBZv.$SCAN_TYPE 
+    ls $dr/$DATE_DIR/${DATE_HOUR}*dBZ.$SCAN_TYPE 
 
 done

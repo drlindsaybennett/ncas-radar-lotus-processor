@@ -80,7 +80,7 @@ while [[ $chunk -lt 24 ]]; do
 
     script_cmd="bsub -q $QUEUE -W $wallclock -o ${output_base}.out -e ${output_base}.err $SCRIPT_DIR/convert-raine-x-band-hour.sh $ARGS"
     echo "[INFO] Running: $script_cmd"
-    echo $script_cmd
+    $script_cmd
 
 
 done
